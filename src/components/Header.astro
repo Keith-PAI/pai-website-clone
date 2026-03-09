@@ -1,30 +1,32 @@
 ---
+import { url } from '../utils/paths';
+
 const currentPath = Astro.url.pathname;
 
 const navItems = [
   {
     label: 'Services',
-    href: '/services/editing-production/',
+    href: url('/services/editing-production/'),
     children: [
-      { label: 'Editing & Production', href: '/services/editing-production/' },
-      { label: 'Meeting Support', href: '/services/meeting-support/' },
-      { label: 'SMS Consulting', href: '/services/sms-consulting/' },
-      { label: 'Pricing', href: '/services/pricing/' },
+      { label: 'Editing & Production', href: url('/services/editing-production/') },
+      { label: 'Meeting Support', href: url('/services/meeting-support/') },
+      { label: 'SMS Consulting', href: url('/services/sms-consulting/') },
+      { label: 'Pricing', href: url('/services/pricing/') },
     ],
   },
-  { label: 'Government', href: '/government/' },
-  { label: 'Blog', href: '/blog/' },
+  { label: 'Government', href: url('/government/') },
+  { label: 'Blog', href: url('/blog/') },
   {
     label: 'About',
-    href: '/about/',
+    href: url('/about/'),
     children: [
-      { label: 'About PAI', href: '/about/' },
-      { label: 'Our Team', href: '/about/team/' },
-      { label: 'History', href: '/about/history/' },
-      { label: 'Downloads', href: '/about/downloads/' },
+      { label: 'About PAI', href: url('/about/') },
+      { label: 'Our Team', href: url('/about/team/') },
+      { label: 'History', href: url('/about/history/') },
+      { label: 'Downloads', href: url('/about/downloads/') },
     ],
   },
-  { label: 'Contact', href: '/contact/' },
+  { label: 'Contact', href: url('/contact/') },
 ];
 
 function isActive(href: string): boolean {
@@ -35,7 +37,7 @@ function isActive(href: string): boolean {
 <header class="sticky top-0 z-50 border-b border-navy-100 bg-white/95 backdrop-blur-sm">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3">
+    <a href={url('/')} class="flex items-center gap-3">
       <div class="flex items-center">
         <svg viewBox="0 0 48 48" class="h-10 w-10" aria-hidden="true">
           <rect width="48" height="48" rx="8" fill="#102a43"/>
@@ -90,7 +92,7 @@ function isActive(href: string): boolean {
         </div>
       ))}
       <a
-        href="/contact/"
+        href={url('/contact/')}
         class="ml-3 rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-500"
       >
         Get a Quote
@@ -148,7 +150,7 @@ function isActive(href: string): boolean {
       ))}
       <div class="pt-2">
         <a
-          href="/contact/"
+          href={url('/contact/')}
           class="block rounded-lg bg-sky-400 px-4 py-2.5 text-center text-sm font-semibold text-white"
         >
           Get a Quote

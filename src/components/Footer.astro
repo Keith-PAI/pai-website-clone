@@ -1,32 +1,34 @@
 ---
+import { url } from '../utils/paths';
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = [
   {
     title: 'Services',
     links: [
-      { label: 'Editing & Production', href: '/services/editing-production/' },
-      { label: 'Meeting Support', href: '/services/meeting-support/' },
-      { label: 'SMS Consulting', href: '/services/sms-consulting/' },
-      { label: 'Pricing', href: '/services/pricing/' },
-      { label: 'Government Services', href: '/government/' },
+      { label: 'Editing & Production', href: url('/services/editing-production/') },
+      { label: 'Meeting Support', href: url('/services/meeting-support/') },
+      { label: 'SMS Consulting', href: url('/services/sms-consulting/') },
+      { label: 'Pricing', href: url('/services/pricing/') },
+      { label: 'Government Services', href: url('/government/') },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About PAI', href: '/about/' },
-      { label: 'Our Team', href: '/about/team/' },
-      { label: 'History', href: '/about/history/' },
-      { label: 'Downloads', href: '/about/downloads/' },
+      { label: 'About PAI', href: url('/about/') },
+      { label: 'Our Team', href: url('/about/team/') },
+      { label: 'History', href: url('/about/history/') },
+      { label: 'Downloads', href: url('/about/downloads/') },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'Blog', href: '/blog/' },
+      { label: 'Blog', href: url('/blog/') },
       { label: 'FRAT Tool', href: 'https://jw2750.github.io/PAI-FRAT/', external: true },
-      { label: 'Contact Us', href: '/contact/' },
+      { label: 'Contact Us', href: url('/contact/') },
     ],
   },
 ];

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { url } from '../../utils/paths';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -76,7 +77,7 @@ const categoryLabels: Record<string, string> = {
                 </time>
               </div>
               <h2 class="mt-3 text-lg font-bold leading-snug group-hover:text-sky-600">
-                <a href={`/blog/${post.id}/`} class="after:absolute after:inset-0 relative">
+                <a href={url(`/blog/${post.id}/`)} class="after:absolute after:inset-0 relative">
                   {post.data.title}
                 </a>
               </h2>
