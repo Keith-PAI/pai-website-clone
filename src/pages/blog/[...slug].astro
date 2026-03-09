@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter((p) => p.data.category === post.data.category && p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const categoryLabels: Record<string, string> = {
+  sms: 'SMS Quick Takes',
+  editing: 'Stet Happens',
+  meetings: 'Meeting Your Needs',
+};
+
+const categoryColors: Record<string, string> = {
+  sms: 'bg-emerald-50 text-emerald-700',
+  editing: 'bg-violet-50 text-violet-700',
+  meetings: 'bg-amber-50 text-amber-700',
+};
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+
+  <article class="py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <nav class="mb-8 flex items-center gap-2 text-sm text-navy-400">
+        <a href="/" class="hover:text-sky-500">Home</a>
+        <span>/</span>
+        <a href="/blog/" class="hover:text-sky-500">Blog</a>
+        <span>/</span>
+        <span class="text-navy-600">{categoryLabels[post.data.category]}</span>
+      </nav>
+
+      <!-- Header -->
+      <header>
+        <span class:list={['inline-block rounded-full px-3 py-1 text-xs font-medium', categoryColors[post.data.category]]}>
+          {categoryLabels[post.data.category]}
+        </span>
+        <h1 class="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+          {post.data.title}
+        </h1>
+        <div class="mt-4 flex items-center gap-4 text-sm text-navy-500">
+          <span>By <strong class="text-navy-700">{post.data.author}</strong></span>
+          <span>&middot;</span>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </time>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-navy mt-10 max-w-none">
+        <Content />
+      </div>
+
+      <!-- Tags -->
+      {post.data.tags.length > 0 && (
+        <div class="mt-10 border-t border-navy-100 pt-6">
+          <div class="flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => (
+              <span class="rounded-full bg-navy-50 px-3 py-1 text-xs font-medium text-navy-600">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- CTA -->
+      <div class="mt-10 rounded-xl bg-navy-50 p-6 text-center">
+        <p class="font-bold text-navy-900">Need help with SMS?</p>
+        <p class="mt-1 text-sm text-navy-500">Our experts can help you implement and manage your safety program.</p>
+        <a href="/contact/" class="mt-4 inline-flex items-center rounded-lg bg-sky-400 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Posts -->
+  {relatedPosts.length > 0 && (
+    <section class="border-t border-navy-100 bg-navy-50/50 py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-xl font-bold">More from {categoryLabels[post.data.category]}</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedPosts.map((related) => (
+            <a href={`/blog/${related.id}/`} class="group rounded-xl border border-navy-100 bg-white p-5 transition-all hover:border-sky-200 hover:shadow-sm">
+              <time class="text-xs text-navy-400" datetime={related.data.pubDate.toISOString()}>
+                {related.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+              <h3 class="mt-2 font-bold leading-snug group-hover:text-sky-600">{related.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-navy-500">{related.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</BaseLayout>
+
+<style is:global>
+  .prose h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700; color: var(--color-navy-900); }
+  .prose h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.125rem; font-weight: 700; color: var(--color-navy-900); }
+  .prose p { margin-bottom: 1rem; line-height: 1.625; color: var(--color-navy-700); }
+  .prose ul { margin-bottom: 1rem; margin-left: 1.5rem; list-style-type: disc; color: var(--color-navy-700); }
+  .prose ol { margin-bottom: 1rem; margin-left: 1.5rem; list-style-type: decimal; color: var(--color-navy-700); }
+  .prose li { line-height: 1.625; margin-bottom: 0.25rem; }
+  .prose strong { font-weight: 600; color: var(--color-navy-900); }
+  .prose em { font-style: italic; }
+  .prose blockquote { margin: 1.5rem 0; border-left: 4px solid var(--color-sky-400); padding-left: 1rem; font-style: italic; color: var(--color-navy-600); }
+  .prose a { font-weight: 500; color: var(--color-sky-500); text-decoration: underline; text-underline-offset: 2px; }
+  .prose a:hover { color: var(--color-sky-600); }
+  .prose table { margin: 1.5rem 0; width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .prose th { border: 1px solid var(--color-navy-200); background-color: var(--color-navy-50); padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; color: var(--color-navy-700); }
+  .prose td { border: 1px solid var(--color-navy-200); padding: 0.5rem 0.75rem; color: var(--color-navy-600); }
+  .prose hr { margin: 2rem 0; border-color: var(--color-navy-200); }
+</style>

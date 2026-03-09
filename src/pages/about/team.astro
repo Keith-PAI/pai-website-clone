@@ -1,0 +1,375 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+interface TeamMember {
+  name: string;
+  title: string;
+  started: string;
+  education: string;
+  certifications?: string[];
+  functions: string[];
+  skills?: string[];
+  veteran?: boolean;
+}
+
+const officers: TeamMember[] = [
+  {
+    name: 'Robin J. Meredith',
+    title: 'Chief Executive Officer, PMP',
+    started: '1995',
+    education: 'B.A. International Studies, Frostburg State University; GWU Publication Specialist Certificate',
+    certifications: ['Project Management Professional', 'Advanced Editing', 'FAA Plain Language Course'],
+    functions: ['Business Owner', 'Contract Management', 'Project Management', 'Meeting Support', 'Advanced Editing'],
+    skills: ['Note taking', 'Technical writing', 'Document management'],
+  },
+  {
+    name: 'Christa D. Brolley',
+    title: 'Chief Operating Officer, PMP, J.D.',
+    started: '1998',
+    education: 'J.D. Summa Cum Laude, Drake University Law School; B.S. Aerospace Engineering, Boston University',
+    certifications: ['Project Management Professional', 'USAF Aviation Courses, Embry-Riddle'],
+    functions: ['Regulatory & Industry Projects', 'Technical & Regulatory Guidance', 'Policy & Procedure Reviews'],
+    skills: ['Regulatory documents', 'Safety reviews for Part 121 air carriers', 'Exemption process instruction'],
+    veteran: true,
+  },
+  {
+    name: 'Peggy A. Swalve',
+    title: 'Chief Administrative Officer, Chief Compliance Officer, J.D.',
+    started: '2007',
+    education: 'J.D., Drake University Law School; B.A. Political Science, Knox College',
+    certifications: [],
+    functions: ['Chief Compliance Officer', 'Government & Industry Work Manager', 'Senior Regulatory Analyst'],
+    skills: ['Contract requirements & compliance', 'Regulatory research', 'Persuasive writing'],
+  },
+];
+
+const directors: TeamMember[] = [
+  {
+    name: 'David S. Binswanger',
+    title: 'PMP, Director of Editing and Production',
+    started: '2010',
+    education: 'M.S. Library Science, University of Maryland; B.A. English, University of Michigan',
+    certifications: ['Project Management Professional', 'Book Editing, Marketing & Production'],
+    functions: ['Editing & Production Leadership', 'Taxonomy Development', 'Technical Writing'],
+    skills: ['Taxonomy development', '508 compliance', 'Industrial hygiene'],
+  },
+  {
+    name: 'Sandra L. Lamparello',
+    title: 'J.D., PMP, Director of Administration and Compliance',
+    started: '2010',
+    education: 'J.D., University of Baltimore School of Law; B.A. Speech Communication, Penn State',
+    certifications: ['Project Management Professional', 'FEMA ICS & NIMS'],
+    functions: ['Administration & Compliance', 'Document Management', 'Event Planning'],
+    skills: ['Taxonomy creation', 'Index editing', 'Public speaking', 'Incident command'],
+  },
+  {
+    name: 'Neil W. Modzelewski',
+    title: 'J.D., Director of Regulatory and Program Support',
+    started: '2005',
+    education: 'J.D., Rutgers School of Law; B.S. Aviation Management, Florida Institute of Technology',
+    certifications: ['Project Management Professional', 'Commercial Pilot', 'Instrument Rating', 'Aircraft Dispatcher'],
+    functions: ['Regulatory & Program Support', 'Database Design', 'Technology Automation'],
+    skills: ['Power Apps/Automate', 'Legal research', 'Database design'],
+  },
+  {
+    name: 'Joseph Werner',
+    title: 'Director of Industry Affairs',
+    started: '2012',
+    education: 'M.B.A. IT Management, SUNY Albany; B.S. Aeronautical Science, Embry-Riddle',
+    certifications: ['Commercial Pilot (Multiengine)', 'Instrument Rating', 'Aircraft Dispatcher'],
+    functions: ['Industry Affairs Leadership', 'SQL & Database Development', 'Technical Writing'],
+    skills: ['Flight simulation', 'Computer building', 'Peripheral design'],
+  },
+  {
+    name: 'Leah Rust',
+    title: 'Deputy Director of Industry Affairs',
+    started: '2015',
+    education: 'M.S. Aeronautics, Embry-Riddle; B.S. Meteorology, Embry-Riddle',
+    functions: ['Technical Writing', 'Research', 'Project Organization'],
+    skills: ['Meteorology', 'Data entry', 'Note-taking'],
+  },
+  {
+    name: 'Peg Sandkam',
+    title: 'PMP, Deputy Director of Editing and Production',
+    started: '2015',
+    education: 'M.S. Professional Studies in Publishing, GWU; B.A. English, Drake University',
+    certifications: ['Project Management Professional', 'Certificate in Editing'],
+    functions: ['Proofreading', 'Copyediting', 'Developmental Editing', 'Fact-Checking'],
+    skills: ['Power Automate', 'Microsoft Lists', 'Microsoft Forms'],
+  },
+];
+
+const employees: TeamMember[] = [
+  { name: 'Ashley Anderson', title: 'Aviation Analyst', started: '2018', education: 'B.S. Aeronautics, Embry-Riddle', certifications: ['Private Pilot (Helicopter)', 'Remote Pilot'], functions: ['Event Review', 'Project Management', 'Meeting Support', 'Data Analysis'], skills: ['SQL', 'Database development'] },
+  { name: 'Zoë Bernard', title: 'Editor', started: '2015', education: 'Certificate in Editing; B.A. Human Development', functions: ['Technical Editing', 'CAST Support', 'FAA Exemptions Research'], skills: ['Technical & creative writing', 'Proofreading'] },
+  { name: 'Marielena Catalan-Castro', title: 'Aviation Analyst', started: '2020', education: 'B.S. Air Traffic Management, Embry-Riddle', certifications: ['Private Pilot (ASEL)'], functions: ['Technical Writing', 'Aviation Data Analysis', 'Meeting Support'] },
+  { name: 'Davis Chung', title: 'Senior Editor', started: '2010', education: 'B.A. History, University of Southern Maine', functions: ['Website Management', 'Graphics/Image Manipulation', 'Document Formatting'], skills: ['Inkscape', 'GIMP', 'Canva', 'Squarespace'] },
+  { name: 'Elisabeth R. DeFrancesco', title: 'Staff Analyst', started: '1989', education: 'B.S. Industrial Relations, UNC Chapel Hill', functions: ['Conference Planning', 'Meeting Support', 'Technical Writing'] },
+  { name: 'Rob Delorimier', title: 'Controller', started: '2022', education: 'B.B.A. Accounting, University of Notre Dame', functions: ['Financial Control & Accounting'] },
+  { name: 'J. Michael Derrick', title: 'PMP, Staff Analyst', started: '2008', education: 'B.S. Aeronautical Science, Embry-Riddle', certifications: ['Project Management Professional', 'Airline Transport Pilot', 'CL-65 & A320 Type Ratings'], functions: ['Staff Analysis', 'Flight Operations'] },
+  { name: 'Keith Estes', title: 'Senior Editor', started: '2010', education: 'B.A. Bible', functions: ['Marketing Graphics/Videos', 'CAST Support', 'FAA Technical Editing'], skills: ['Canva', 'Power Automate', 'AI Prompting'] },
+  { name: 'Scott J. Harper', title: 'Staff Analyst', started: '2008', education: 'U.S. Naval Post Graduate Aviation Safety School', certifications: ['Airline Transport Pilot (Multiengine Land)'], functions: ['InfoShare Planning', 'Staff Analysis'] },
+  { name: 'Natalie Macintyre', title: 'Aviation Analyst', started: '2021', education: 'B.S. Aeronautics, Liberty University', certifications: ['Certified Flight Instructor', 'Commercial Pilot (SEL/Instrument)'], functions: ['Technical Writing', 'Meeting Support', 'Aviation Data Analysis'] },
+  { name: 'Tom McDonald', title: 'Senior Aviation Analyst', started: '2021', education: 'B.S. Professional Aeronautics, Embry-Riddle; M.S. Unmanned Systems', certifications: ['Airline Transport Pilot (MEL)', 'Mechanic (A&P with IA)', 'Remote Pilot'], functions: ['Aviation Data Analysis', 'Technical Writing', 'Incident Categorization'] },
+  { name: 'Denise Pierson', title: 'Meeting Planning Specialist', started: '2023', education: 'B.S. Health & Physical Education, West Chester University', certifications: ['Certified Government Meeting Professional'], functions: ['Project Management', 'Meeting Planning'] },
+  { name: 'Amanda Rummel', title: 'Senior Meeting Planning Specialist', started: '2011', education: 'B.S. Writing, Rhetoric & Technical Communication', certifications: ['Certified Meeting Professional', 'Certified Government Meeting Professional'], functions: ['Meeting Planning', 'Project Management'] },
+  { name: 'Jessica M. Starkey', title: 'Digital Librarian', started: '2008', education: 'Master of Library & Information Science', functions: ['Database Design/Management', 'Data Analysis', 'Research & Fact-Checking'] },
+  { name: 'Amanda Swanson', title: 'Aviation Analyst', started: '2021', education: 'M.A. Executive Leadership, Liberty; M.S. Commercial Aviation, Delta State; B.S. Aeronautics, Liberty', certifications: ['Certified Flight Instructor', 'Commercial Pilot (SEL, Instrument)'], functions: ['Data Examination', 'Meeting Support', 'Document Preparation'] },
+  { name: 'Logan M. Thomas', title: 'Aviation Analyst', started: '2022', education: 'B.S. Aeronautical Sciences, Embry-Riddle; M.S. Occupational Safety Management (in progress)', certifications: ['Commercial Pilot', 'OSHA 30hr'], functions: ['Meeting Support', 'Aviation Data Analysis', 'Incident Categorization', 'Technical Writing'] },
+  { name: 'Matt Van Gundy', title: 'Senior Aviation Analyst', started: '2011', education: 'B.S. Aviation Administration, Cal State LA; M.S. Aeronautics, Embry-Riddle', certifications: ['FAA Airframe & Powerplant', 'Private Pilot (SEL)'], functions: ['Event Review', 'Incident Categorization', 'Technical Writing', 'Data Analysis'] },
+];
+
+function getInitials(name: string): string {
+  return name.split(' ').filter(n => !n.endsWith('.')).map(n => n[0]).join('').slice(0, 2);
+}
+
+function getRoleColor(role: string): string {
+  if (role.includes('Chief') || role.includes('CEO') || role.includes('COO') || role.includes('CAO')) return 'bg-sky-400 text-white';
+  if (role.includes('Director') || role.includes('Deputy')) return 'bg-navy-700 text-white';
+  return 'bg-navy-200 text-navy-700';
+}
+---
+
+<BaseLayout title="Our Team" description="Meet the PAI Consulting team — 27+ pilots, editors, analysts, lawyers, and aviation professionals serving the industry since 1978.">
+
+  <!-- Hero -->
+  <section class="bg-navy-950 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav class="mb-6 flex items-center gap-2 text-sm text-navy-400">
+          <a href="/" class="hover:text-sky-400">Home</a>
+          <span>/</span>
+          <a href="/about/" class="hover:text-sky-400">About</a>
+          <span>/</span>
+          <span class="text-sky-400">Team</span>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Our Team</h1>
+        <p class="mt-6 text-lg leading-relaxed text-navy-300">
+          Pilots, aviation professionals, editors, technical writers, lawyers, project managers, conference planners, and education professionals — all dedicated to aviation excellence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section class="sticky top-[73px] z-40 border-b border-navy-100 bg-white/95 backdrop-blur-sm">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex gap-1 overflow-x-auto py-3" id="team-tabs" aria-label="Team filters">
+        <button data-filter="all" class="team-tab active shrink-0 rounded-lg px-4 py-2 text-sm font-medium text-navy-700 transition-colors hover:bg-navy-50" aria-pressed="true">
+          All (27)
+        </button>
+        <button data-filter="officers" class="team-tab shrink-0 rounded-lg px-4 py-2 text-sm font-medium text-navy-500 transition-colors hover:bg-navy-50" aria-pressed="false">
+          Officers (3)
+        </button>
+        <button data-filter="directors" class="team-tab shrink-0 rounded-lg px-4 py-2 text-sm font-medium text-navy-500 transition-colors hover:bg-navy-50" aria-pressed="false">
+          Directors (6)
+        </button>
+        <button data-filter="employees" class="team-tab shrink-0 rounded-lg px-4 py-2 text-sm font-medium text-navy-500 transition-colors hover:bg-navy-50" aria-pressed="false">
+          Employees (18)
+        </button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Officers -->
+  <section class="py-16" data-section="officers">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Officers</h2>
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        {officers.map((person) => (
+          <div class="team-card group rounded-2xl border border-navy-100 bg-white p-6 transition-all hover:border-sky-200 hover:shadow-md" data-role="officers">
+            <div class="flex items-center gap-4">
+              <div class:list={['flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold', getRoleColor(person.title)]}>
+                {getInitials(person.name)}
+              </div>
+              <div class="min-w-0">
+                <h3 class="truncate font-bold text-navy-900">{person.name}</h3>
+                <p class="truncate text-sm text-navy-500">{person.title}</p>
+                <div class="mt-1 flex items-center gap-2">
+                  <span class="text-xs text-navy-400">Since {person.started}</span>
+                  {person.veteran && (
+                    <span class="rounded bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700">Veteran</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <details class="mt-4">
+              <summary class="cursor-pointer text-sm font-medium text-sky-500 hover:text-sky-600">View details</summary>
+              <div class="mt-3 space-y-3 border-t border-navy-50 pt-3">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Education</p>
+                  <p class="mt-1 text-sm text-navy-600">{person.education}</p>
+                </div>
+                {person.certifications && person.certifications.length > 0 && (
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Certifications</p>
+                    <div class="mt-1 flex flex-wrap gap-1">
+                      {person.certifications.map((cert) => (
+                        <span class="rounded-full bg-navy-50 px-2 py-0.5 text-xs text-navy-600">{cert}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Key Functions</p>
+                  <ul class="mt-1 space-y-1">
+                    {person.functions.map((fn) => (
+                      <li class="flex items-center gap-2 text-sm text-navy-600">
+                        <svg class="h-3 w-3 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                        {fn}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Directors -->
+  <section class="border-t border-navy-100 bg-navy-50/30 py-16" data-section="directors">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Directors</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {directors.map((person) => (
+          <div class="team-card group rounded-2xl border border-navy-100 bg-white p-6 transition-all hover:border-sky-200 hover:shadow-md" data-role="directors">
+            <div class="flex items-center gap-4">
+              <div class:list={['flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold', getRoleColor(person.title)]}>
+                {getInitials(person.name)}
+              </div>
+              <div class="min-w-0">
+                <h3 class="truncate font-bold text-navy-900">{person.name}</h3>
+                <p class="truncate text-sm text-navy-500">{person.title}</p>
+                <span class="text-xs text-navy-400">Since {person.started}</span>
+              </div>
+            </div>
+
+            <details class="mt-4">
+              <summary class="cursor-pointer text-sm font-medium text-sky-500 hover:text-sky-600">View details</summary>
+              <div class="mt-3 space-y-3 border-t border-navy-50 pt-3">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Education</p>
+                  <p class="mt-1 text-sm text-navy-600">{person.education}</p>
+                </div>
+                {person.certifications && person.certifications.length > 0 && (
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Certifications</p>
+                    <div class="mt-1 flex flex-wrap gap-1">
+                      {person.certifications.map((cert) => (
+                        <span class="rounded-full bg-navy-50 px-2 py-0.5 text-xs text-navy-600">{cert}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Key Functions</p>
+                  <ul class="mt-1 space-y-1">
+                    {person.functions.map((fn) => (
+                      <li class="flex items-center gap-2 text-sm text-navy-600">
+                        <svg class="h-3 w-3 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                        {fn}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Employees -->
+  <section class="py-16" data-section="employees">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Employees</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {employees.map((person) => (
+          <div class="team-card group rounded-2xl border border-navy-100 bg-white p-6 transition-all hover:border-sky-200 hover:shadow-md" data-role="employees">
+            <div class="flex items-center gap-4">
+              <div class:list={['flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold', getRoleColor(person.title)]}>
+                {getInitials(person.name)}
+              </div>
+              <div class="min-w-0">
+                <h3 class="truncate font-bold text-navy-900">{person.name}</h3>
+                <p class="truncate text-sm text-navy-500">{person.title}</p>
+                <span class="text-xs text-navy-400">Since {person.started}</span>
+              </div>
+            </div>
+
+            <details class="mt-4">
+              <summary class="cursor-pointer text-sm font-medium text-sky-500 hover:text-sky-600">View details</summary>
+              <div class="mt-3 space-y-3 border-t border-navy-50 pt-3">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Education</p>
+                  <p class="mt-1 text-sm text-navy-600">{person.education}</p>
+                </div>
+                {person.certifications && person.certifications.length > 0 && (
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Certifications</p>
+                    <div class="mt-1 flex flex-wrap gap-1">
+                      {person.certifications.map((cert) => (
+                        <span class="rounded-full bg-navy-50 px-2 py-0.5 text-xs text-navy-600">{cert}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-navy-400">Key Functions</p>
+                  <ul class="mt-1 space-y-1">
+                    {person.functions.map((fn) => (
+                      <li class="flex items-center gap-2 text-sm text-navy-600">
+                        <svg class="h-3 w-3 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                        {fn}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .team-tab.active {
+    background-color: var(--color-sky-400);
+    color: white;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('.team-tab');
+  const sections = document.querySelectorAll('[data-section]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const filter = (tab as HTMLElement).dataset.filter;
+
+      tabs.forEach((t) => {
+        t.classList.remove('active');
+        t.setAttribute('aria-pressed', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
+
+      sections.forEach((section) => {
+        const sectionEl = section as HTMLElement;
+        if (filter === 'all' || sectionEl.dataset.section === filter) {
+          sectionEl.style.display = '';
+        } else {
+          sectionEl.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

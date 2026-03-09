@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const smsComponents = [
+  {
+    title: 'Safety Policy',
+    description: 'Conveys management commitment to safety and assigns accountability throughout the organization. An effective safety policy serves as a decision-making tool that builds authentic safety culture.',
+    icon: 'M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z',
+  },
+  {
+    title: 'Safety Risk Management',
+    description: 'Determines acceptable risk levels and identifies hazards through a structured decision-making process. Includes hazard identification, risk assessment, and developing safety risk controls.',
+    icon: 'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605',
+  },
+  {
+    title: 'Safety Assurance',
+    description: 'Continuously monitors activities to verify that safety risk controls are working effectively. Ensures ongoing compliance and identifies emerging risks before they become incidents.',
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  },
+  {
+    title: 'Safety Promotion',
+    description: 'Uses training and communication to build a positive safety culture. Includes safety awareness programs, training development, and organizational communication strategies.',
+    icon: 'M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342',
+  },
+];
+
+const courseModules = [
+  'Introduction to SMS',
+  'SMS Components',
+  'Business Case for SMS',
+  'Human Error in SMS',
+  'Safety Culture',
+  'SMS Requirements & Standards',
+  'SMS Policy',
+  'Organizational Responsibilities',
+  'Safety Risk Management',
+  'Safety Assurance',
+  'Safety Promotion',
+];
+---
+
+<BaseLayout title="SMS Consulting & Training" description="Safety Management System consulting and training for aviation organizations. Expert guidance on SMS implementation, risk management, and safety assurance.">
+
+  <!-- Hero -->
+  <section class="bg-navy-950 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav class="mb-6 flex items-center gap-2 text-sm text-navy-400">
+          <a href="/" class="hover:text-sky-400">Home</a>
+          <span>/</span>
+          <span class="text-navy-300">Services</span>
+          <span>/</span>
+          <span class="text-sky-400">SMS Consulting</span>
+        </nav>
+        <h1 class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
+          Safety Management System Consulting
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-navy-300">
+          A safety management system (SMS) is a formal, top-down, organization-wide approach to managing safety risk and ensuring the effectiveness of safety risk controls.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a
+            href="/contact/"
+            class="inline-flex items-center rounded-lg bg-sky-400 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-sky-500"
+          >
+            Get SMS Consulting
+          </a>
+          <a
+            href="https://jw2750.github.io/PAI-FRAT/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-lg border border-navy-600 px-6 py-3 text-base font-semibold text-navy-200 transition-colors hover:border-sky-400 hover:text-sky-400"
+          >
+            Try Our Free FRAT Tool
+            <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Four Components -->
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold sm:text-3xl">The Four Components of SMS</h2>
+      <p class="mt-3 max-w-2xl text-navy-500">
+        Every effective SMS is built on four interconnected components that work together to create a comprehensive safety framework.
+      </p>
+
+      <div class="mt-12 grid gap-8 sm:grid-cols-2">
+        {smsComponents.map((component, i) => (
+          <div class="flex gap-5 rounded-xl border border-navy-100 bg-white p-6 transition-all hover:border-sky-200 hover:shadow-sm">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-400/10">
+              <svg class="h-6 w-6 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d={component.icon} />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">
+                <span class="mr-2 text-sky-400">{String(i + 1).padStart(2, '0')}</span>
+                {component.title}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-navy-500">{component.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Course -->
+  <section class="border-t border-navy-100 bg-navy-50/50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <span class="inline-flex items-center rounded-full bg-sky-400/10 px-3 py-1 text-xs font-semibold text-sky-600">
+            Coming Soon
+          </span>
+          <h2 class="mt-4 text-2xl font-bold sm:text-3xl">SMS Training Course</h2>
+          <p class="mt-4 text-navy-500 leading-relaxed">
+            A comprehensive training course featuring 11 modules covering SMS principles from introduction through safety promotion. Available as self-paced on-demand or in a hybrid 6-week format with instructor discussions.
+          </p>
+
+          <div class="mt-6 space-y-4">
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              <p class="text-sm text-navy-600">Self-paced access on any device via Teachable platform</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              <p class="text-sm text-navy-600">Reference library and community forum access</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              <p class="text-sm text-navy-600">Certificate upon completion</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+              <p class="text-sm text-navy-600">Optional one-hour coaching session after course completion</p>
+            </div>
+          </div>
+
+          <!-- Volume Discounts -->
+          <div class="mt-8 rounded-xl border border-navy-200 bg-white p-5">
+            <h4 class="text-sm font-bold uppercase tracking-wider text-navy-400">Volume Discounts</h4>
+            <div class="mt-3 grid grid-cols-3 gap-4 text-center">
+              <div>
+                <p class="text-2xl font-bold text-sky-500">15%</p>
+                <p class="text-xs text-navy-500">2-5 accesses</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-sky-500">20%</p>
+                <p class="text-xs text-navy-500">6-9 accesses</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-sky-500">25%</p>
+                <p class="text-xs text-navy-500">10+ accesses</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Modules -->
+        <div>
+          <h3 class="text-lg font-bold">Course Modules</h3>
+          <div class="mt-4 space-y-3">
+            {courseModules.map((module, i) => (
+              <div class="flex items-center gap-4 rounded-lg border border-navy-100 bg-white px-4 py-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-navy-100 text-sm font-bold text-navy-600">
+                  {i + 1}
+                </span>
+                <span class="text-sm font-medium text-navy-700">{module}</span>
+              </div>
+            ))}
+            <div class="flex items-center gap-4 rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-3">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-400 text-sm font-bold text-white">
+                ✓
+              </span>
+              <span class="text-sm font-medium text-sky-700">Final Exam &amp; Certification</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold sm:text-3xl">Questions About SMS?</h2>
+      <p class="mt-4 text-navy-500">
+        Whether you're starting from scratch or enhancing an existing SMS, our consultants can help guide your organization to a safer, more efficient operation.
+      </p>
+      <a
+        href="/contact/"
+        class="mt-8 inline-flex items-center rounded-lg bg-sky-400 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-sky-500"
+      >
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
